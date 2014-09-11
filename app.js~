@@ -85,27 +85,27 @@ var showQuestion = function(question) {
 // this function takes the Answerers object returned by StackOverflow 
 // and creates new result to be appended to DOM
 
-var showAnswerer = function (answerer) {
-	//sAnswerer = JSON.stringify(answere);
-	//console.log(sAnswerer);
-//alert('This is the answerers data ' + answerer.users);
+var showAnswerers = function (answerers) {
+	sAnswerer = JSON.stringify(answeres);
+	alert(sAnswerer);
+alert('This is the answerers data ' + answerers.users);
 // clone our result template code
-	var result2 = $('.templates .answerer').clone();
+	var result2 = $('.templates .answerers').clone();
 	
 	
-	var name = result2.find('.answerer-text');
-	name.text(answerer.user.display_name);
+	var name = result2.find('.answerers-text');
+	name.text(display_name);
 	
 // Set the question properties in result
 	var reputation = result2.find('.reputation');
-	reputation.text(answerer.user.reputation);
+	reputation.text(reputation);
 
    var score = result2.find('.score');
-	score.text(answerer.score);
+	score.text(score);
 
 
   var type = result2.find('.type');
-	name.text(answerer.user.user_type);
+	name.text(user_type);
 
    return result2;
 
@@ -190,7 +190,7 @@ var getAnswerers = function(url) {
 		})
 	.done(function(result2){
 		var result3 = JSON.stringify(result2);
-		//console.log( "this is result 2" +result3);
+		alert( "this is result 2" +result3);
 	  // alert(result3.items.length);
 		 
       alert('The url is ' + url);
@@ -200,10 +200,8 @@ var getAnswerers = function(url) {
 //		$('.search-results').html(searchResults);
 
 		$.each(result2.items, function(i, item) {
-			var answerer = showAnswerer(item);
-			var newAnswerer2 = JSON.stringify(answerer);
-			alert("This is the answerer " + newAnswerer2);
-			$('.results2').append(answerer);
+			var answerers = showAnswerers(item);
+			$('.results2').append(answerers);
 		});
 	})
 	.fail(function(jqXHR, error, errorThrown){
