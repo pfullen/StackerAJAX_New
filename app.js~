@@ -20,7 +20,7 @@ $(document).ready( function() {
 		var topAnswers = $(this).find("input[name = 'answerers']").val();
 
 		var urlResult = getURL(topAnswers);
-		alert(topAnswers);
+		//alert(topAnswers);
 		
 		getAnswerers(urlResult);
 		
@@ -85,27 +85,27 @@ var showQuestion = function(question) {
 // this function takes the Answerers object returned by StackOverflow 
 // and creates new result to be appended to DOM
 
-var showAnswerers = function (answerers) {
-	sAnswerer = JSON.stringify(answeres);
-	alert(sAnswerer);
-alert('This is the answerers data ' + answerers.users);
+var showAnswerer = function (answerer) {
+	//sAnswerer = JSON.stringify(answere);
+	//console.log(sAnswerer);
+//alert('This is the answerers data ' + answerer.users);
 // clone our result template code
-	var result2 = $('.templates .answerers').clone();
+	var result2 = $('.templates .answerer').clone();
 	
 	
-	var name = result2.find('.answerers-text');
-	name.text(display_name);
+	var name = result2.find('.answerer-text');
+	name.text(answerer.user.display_name);
 	
 // Set the question properties in result
 	var reputation = result2.find('.reputation');
-	reputation.text(reputation);
+	reputation.text(answerer.user.reputation);
 
    var score = result2.find('.score');
-	score.text(score);
+	score.text(answerer.score);
 
 
   var type = result2.find('.type');
-	name.text(user_type);
+	type.text(answerer.user.user_type);
 
    return result2;
 
@@ -177,9 +177,9 @@ var getUnanswered = function(tags) {
 // get Answerers
 
 var getAnswerers = function(url) {
-	alert('you got to the function');
+	//alert('you got to the function');
 	// the parameters we need to pass in our request to StackOverflow's API
-	      alert('The url is ' + url);
+	   //   alert('The url is ' + url);
 	     
 	
 	var result2 = $.ajax({
@@ -190,18 +190,19 @@ var getAnswerers = function(url) {
 		})
 	.done(function(result2){
 		var result3 = JSON.stringify(result2);
-		alert( "this is result 2" +result3);
+		//console.log( "this is result 2" +result3);
 	  // alert(result3.items.length);
 		 
-      alert('The url is ' + url);
+  //    alert('The url is ' + url);
  //     alert('the result is ' + new);		
 	//	var searchResults2 = showSearchResults(topAnswers, result2.items.length);
 
 //		$('.search-results').html(searchResults);
 
 		$.each(result2.items, function(i, item) {
-			var answerers = showAnswerers(item);
-			$('.results2').append(answerers);
+			var answerer = showAnswerer(item);
+		
+			$('.results2').append(answerer);
 		});
 	})
 	.fail(function(jqXHR, error, errorThrown){

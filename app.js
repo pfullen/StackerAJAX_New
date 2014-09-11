@@ -20,7 +20,7 @@ $(document).ready( function() {
 		var topAnswers = $(this).find("input[name = 'answerers']").val();
 
 		var urlResult = getURL(topAnswers);
-		alert(topAnswers);
+		//alert(topAnswers);
 		
 		getAnswerers(urlResult);
 		
@@ -105,7 +105,7 @@ var showAnswerer = function (answerer) {
 
 
   var type = result2.find('.type');
-	name.text(answerer.user.user_type);
+	type.text(answerer.user.user_type);
 
    return result2;
 
@@ -177,9 +177,9 @@ var getUnanswered = function(tags) {
 // get Answerers
 
 var getAnswerers = function(url) {
-	alert('you got to the function');
+	//alert('you got to the function');
 	// the parameters we need to pass in our request to StackOverflow's API
-	      alert('The url is ' + url);
+	   //   alert('The url is ' + url);
 	     
 	
 	var result2 = $.ajax({
@@ -193,7 +193,7 @@ var getAnswerers = function(url) {
 		//console.log( "this is result 2" +result3);
 	  // alert(result3.items.length);
 		 
-      alert('The url is ' + url);
+  //    alert('The url is ' + url);
  //     alert('the result is ' + new);		
 	//	var searchResults2 = showSearchResults(topAnswers, result2.items.length);
 
@@ -201,8 +201,7 @@ var getAnswerers = function(url) {
 
 		$.each(result2.items, function(i, item) {
 			var answerer = showAnswerer(item);
-			var newAnswerer2 = JSON.stringify(answerer);
-			alert("This is the answerer " + newAnswerer2);
+		
 			$('.results2').append(answerer);
 		});
 	})
