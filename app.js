@@ -190,7 +190,7 @@ var getAnswerers = function(url) {
 		})
 	.done(function(result2){
 		var result3 = JSON.stringify(result2);
-		//console.log( "this is result 2" +result3);
+		console.log( "this is result 2" +result3);
 	  // alert(result3.items.length);
 		 
   //    alert('The url is ' + url);
